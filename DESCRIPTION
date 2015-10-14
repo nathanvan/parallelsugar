@@ -1,0 +1,11 @@
+Package: parallelsugar
+Title: mclapply() syntax for Windows machines
+Version: 0.0.0.2
+Authors@R: person("Nathan", "VanHoudnos", , "nathanvan@gmail.com", role = c("aut", "cre"))
+Description: The simplest syntax for embarrassingly parallel computation in R is the mclapply() function from the parallel package. Unfortunately, mclapply() does not work on Windows machines because the mclapply() implementation relies on forking and Windows does not support forking. This package implements the mclapply() syntax for Windows as a wrapper to a parLapply() call on a socket based cluster transparently constructed in the background.
+Depends: R (>= 3.1.3)
+Imports: parallel
+Suggests: testthat,
+          Matrix
+License: MIT
+LazyData: true
