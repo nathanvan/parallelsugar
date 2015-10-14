@@ -14,12 +14,15 @@ and the accompanying blog post describing its use [here](http://edustatistics.or
 
 ## Installation 
 
-Step 0: If you do not already have `devtools` installed, install it using the instructions [here](http://www.rstudio.com/products/rpackages/devtools/).
+Step 0: If you do not already have `devtools` installed, install it using the instructions [here](http://www.rstudio.com/products/rpackages/devtools/). Note that for the purposes of this package, [installing `Rtools`](https://cran.r-project.org/bin/windows/Rtools/) is not necessary. 
 
-Step 1: Install `parallelsugar` directly from my GitHub repository using `install_github('nathanvan/parallelsugar')`.
+Step 1: Install `parallelsugar` directly from my GitHub repository using `install_github('nathanvan/parallelsugar')`. For the purposes of this package, you may ignore the error about `Rtools` (unless you already have it installed, in which case the warning will not appear.)
 
 ```{r}
 > library(devtools)
+WARNING: Rtools is required to build R packages, but is not currently
+installed.
+   ... snip ...
 > install_github('nathanvan/parallelsugar')
 Downloading github repo nathanvan/parallelsugar@master
 Installing parallelsugar
@@ -56,9 +59,15 @@ system.time( mclapply(1:4, function(xx){ Sys.sleep(10) }) )
 ##    0.04    0.08   12.98 
 ```
 
-## Use of global variables and packages
+### Use of global variables and packages
 
-By design, `parallelsugar` approximates a fork based cluster -- every object that is within scope to the master R process is copied over to the processes on the other sockets. This implies that (i) you can quickly run out of memory and (ii) you can waste a lot of time copying over unnecessary objects hanging around in your R session. **Be warned!**
+By design, `parallelsugar` approximates a fork based cluster -- every object that is within scope to the master R process is copied over to the processes on the other sockets. This implies that 
+
+  * you can quickly run out of memory, and 
+  * you can waste a lot of time copying over unnecessary objects hanging 
+      around in your R session. 
+
+**Be warned!**
 
 ```{r}
 ## Load a package 
@@ -90,6 +99,9 @@ all.equal( serial.output, par.output )
 ## [1] TRUE
 ```
 
-# Request for feedback and help
+## Request for feedback and help
 
-I put this together because it helped to solve a specific problem that I was having. If it solves your problem, please let me know. If it needs to be modified to solve your problem, please either (i) open an issue on GitHub or (ii) even better, issue a pull request. 
+I put this together because it helped to solve a specific problem that I was having. If it solves your problem, please let me know. If it needs to be modified to solve your problem, please either 
+
+  * open an issue on GitHub, or 
+  * even better, fork, fix, and issue a pull request. 
