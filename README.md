@@ -4,7 +4,7 @@ An R package to provide mclapply() syntax for Windows machines. Has no effect on
 
 Note, this is an update of the script formerly found at
 
-> http://www.stat.cmu.edu/~nmv/setup/mclapply.hack.R. 
+> http://www.stat.cmu.edu/~nmv/setup/mclapply.hack.R
 
 If you wish to continue using that version (for whatever reason), you can find the script at 
 
